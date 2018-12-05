@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html>
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<link rel="bookmark" type="image/x-icon" href="/img/logo.jpg">
+	<link rel="shortcut icon" href="/img/logo.jpg">
+	
+			    <title>
+    Loren2o's Blog
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/css/mic_main.css">
+    <link rel="stylesheet" href="/css/dropdownMenu.css">
+    <meta name="keywords" content="Loren2o">
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css">
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+</head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css">
+<link rel="stylesheet" href="/css/typo.css">
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">Loren2o</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special">
+            <ul class="menu links">
+			<!-- Homepage  主页  --> 
+			<li>
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">分类</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        
+	                    </li></ul>
+	        </li>
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/tag/" title="标签">
+		                标签
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+			</ul>
+</nav>
+
+        <div id="main">
+            <div class="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>Request对象和Response对象</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h1 id="Request对象和Response对象"><a href="#Request对象和Response对象" class="headerlink" title="Request对象和Response对象"></a>Request对象和Response对象</h1><h2 id="request对象"><a href="#request对象" class="headerlink" title="request对象"></a>request对象</h2><p>当一个页面被请求时，Django就会创建一个包含本次请求原信息的HttpRequest对象。<br>Django会将这个对象自动传递给响应的视图函数，一般视图函数约定俗成地使用 request 参数承接这个对象。<br><a href="https://docs.djangoproject.com/en/1.11/ref/request-response/" target="_blank" rel="noopener">官方文档</a></p>
+<h3 id="请求相关的常用值"><a href="#请求相关的常用值" class="headerlink" title="请求相关的常用值"></a>请求相关的常用值</h3><p>path_info     返回用户访问url，不包括域名<br>method        请求中使用的HTTP方法的字符串表示，全大写表示。<br>GET              包含所有HTTP  GET参数的类字典对象<br>POST           包含所有HTTP POST参数的类字典对象<br>body            请求体，byte类型 request.POST的数据就是从body里面提取到的</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>所有的属性应该被认为是只读的，除非另有说明。</p>
+<p>属性：<br>　　django将请求报文中的请求行、头部信息、内容主体封装成 HttpRequest 类中的属性。<br>   除了特殊说明的之外，其他均为只读的。</p>
+<p>0.HttpRequest.scheme<br>   表示请求方案的字符串（通常为http或https）</p>
+<p>1.HttpRequest.body</p>
+<p>　　一个字符串，代表请求报文的主体。在处理非 HTTP 形式的报文时非常有用，例如：二进制图片、XML,Json等。</p>
+<p>　　但是，如果要处理表单数据的时候，推荐还是使用 HttpRequest.POST 。</p>
+<p>　　另外，我们还可以用 python 的类文件方法去操作它，详情参考 HttpRequest.read() 。</p>
+<p>2.HttpRequest.path</p>
+<p>　　一个字符串，表示请求的路径组件（不含域名）。</p>
+<p>　　例如：”/music/bands/the_beatles/“</p>
+<p>3.HttpRequest.method</p>
+<p>　　一个字符串，表示请求使用的HTTP 方法。必须使用大写。</p>
+<p>　　例如：”GET”、”POST”</p>
+<p>4.HttpRequest.encoding</p>
+<p>　　一个字符串，表示提交的数据的编码方式（如果为 None 则表示使用 DEFAULT_CHARSET 的设置，默认为 ‘utf-8’）。<br>   这个属性是可写的，你可以修改它来修改访问表单数据使用的编码。<br>   接下来对属性的任何访问（例如从 GET 或 POST 中读取数据）将使用新的 encoding 值。<br>   如果你知道表单数据的编码不是 DEFAULT_CHARSET ，则使用它。</p>
+<p>5.HttpRequest.GET </p>
+<p>　　一个类似于字典的对象，包含 HTTP GET 的所有参数。详情请参考 QueryDict 对象。</p>
+<p>6.HttpRequest.POST</p>
+<p>　　一个类似于字典的对象，如果请求中包含表单数据，则将这些数据封装成 QueryDict 对象。</p>
+<p>　　POST 请求可以带有空的 POST 字典 —— 如果通过 HTTP POST 方法发送一个表单，但是表单中没有任何的数据，QueryDict 对象依然会被创建。<br>   因此，不应该使用 if request.POST  来检查使用的是否是POST 方法；应该使用 if request.method == “POST” </p>
+<p>　　另外：如果使用 POST 上传文件的话，文件信息将包含在 FILES 属性中。</p>
+<p> 7.HttpRequest.COOKIES</p>
+<p>　　一个标准的Python 字典，包含所有的cookie。键和值都为字符串。</p>
+<p>8.HttpRequest.FILES</p>
+<p>　　一个类似于字典的对象，包含所有的上传文件信息。<br>   FILES 中的每个键为<input type="file" name=""> 中的name，值则为对应的数据。</p>
+<p>　　注意，FILES 只有在请求的方法为POST 且提交的<form> 带有enctype=”multipart/form-data” 的情况下才会<br>   包含数据。否则，FILES 将为一个空的类似于字典的对象。</form></p>
+<p>9.HttpRequest.META</p>
+<p> 　　一个标准的Python 字典，包含所有的HTTP 首部。具体的头部信息取决于客户端和服务器，下面是一些示例：</p>
+<pre><code>CONTENT_LENGTH —— 请求的正文的长度（是一个字符串）。
+CONTENT_TYPE —— 请求的正文的MIME 类型。
+HTTP_ACCEPT —— 响应可接收的Content-Type。
+HTTP_ACCEPT_ENCODING —— 响应可接收的编码。
+HTTP_ACCEPT_LANGUAGE —— 响应可接收的语言。
+HTTP_HOST —— 客服端发送的HTTP Host 头部。
+HTTP_REFERER —— Referring 页面。
+HTTP_USER_AGENT —— 客户端的user-agent 字符串。
+QUERY_STRING —— 单个字符串形式的查询字符串（未解析过的形式）。
+REMOTE_ADDR —— 客户端的IP 地址。
+REMOTE_HOST —— 客户端的主机名。
+REMOTE_USER —— 服务器认证后的用户。
+REQUEST_METHOD —— 一个字符串，例如&quot;GET&quot; 或&quot;POST&quot;。
+SERVER_NAME —— 服务器的主机名。
+SERVER_PORT —— 服务器的端口（是一个字符串）。
+</code></pre><p> 　　从上面可以看到，除 CONTENT_LENGTH 和 CONTENT_TYPE 之外，请求中的任何 HTTP 首部转换为 META 的键时，<br>    都会将所有字母大写并将连接符替换为下划线最后加上 HTTP_  前缀。<br>    所以，一个叫做 X-Bender 的头部将转换成 META 中的 HTTP_X_BENDER 键。</p>
+<p>10.HttpRequest.user</p>
+<p>　　一个 AUTH_USER_MODEL 类型的对象，表示当前登录的用户。</p>
+<p>　　如果用户当前没有登录，user 将设置为 django.contrib.auth.models.AnonymousUser 的一个实例。你可以通过 is_authenticated() 区分它们。</p>
+<pre><code>例如：
+
+if request.user.is_authenticated():
+    # Do something for logged-in users.
+else:
+    # Do something for anonymous users.
+
+
+ 　　user 只有当Django 启用 AuthenticationMiddleware 中间件时才可用。
+
+ -------------------------------------------------------------------------------------
+
+匿名用户
+class models.AnonymousUser
+
+django.contrib.auth.models.AnonymousUser 类实现了django.contrib.auth.models.User 接口，但具有下面几个不同点：
+
+id 永远为None。
+username 永远为空字符串。
+get_username() 永远返回空字符串。
+is_staff 和 is_superuser 永远为False。
+is_active 永远为 False。
+groups 和 user_permissions 永远为空。
+is_anonymous() 返回True 而不是False。
+is_authenticated() 返回False 而不是True。
+set_password()、check_password()、save() 和delete() 引发 NotImplementedError。
+New in Django 1.8:
+新增 AnonymousUser.get_username() 以更好地模拟 django.contrib.auth.models.User。
+</code></pre><p>11.HttpRequest.session</p>
+<p> 　　一个既可读又可写的类似于字典的对象，表示当前的会话。只有当Django 启用会话的支持时才可用。<br>    完整的细节参见会话的文档。</p>
+<p>request属性相关</p>
+<p>上传文件示例</p>
+<pre><code>def upload(request):
+    &quot;&quot;&quot;
+    保存上传文件前，数据需要存放在某个位置。
+    默认当上传文件小于2.5M时，django会将上传文件的全部内容读进内存。
+    从内存读取一次，写磁盘一次。
+    但当上传文件很大时，django会把上传文件写到临时文件中，然后存放到系统临时文件夹中。
+    :param request: 
+    :return: 
+    &quot;&quot;&quot;
+    if request.method == &quot;POST&quot;:
+        # 从请求的FILES中获取上传文件的文件名，file为页面上type=files类型input的name属性值
+        filename = request.FILES[&quot;file&quot;].name
+        # 在项目目录下新建一个文件
+        with open(filename, &quot;wb&quot;) as f:
+            # 从上传的文件对象中一点一点读
+            for chunk in request.FILES[&quot;file&quot;].chunks():
+                # 写入本地文件
+                f.write(chunk)
+        return HttpResponse(&quot;上传OK&quot;)
+</code></pre><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>1.HttpRequest.get_host()</p>
+<p>　　根据从HTTP_X_FORWARDED_HOST（如果打开 USE_X_FORWARDED_HOST，默认为False）和 HTTP_HOST 头部信息返回请求的原始主机。<br>   如果这两个头部没有提供相应的值，则使用SERVER_NAME 和SERVER_PORT，在PEP 3333 中有详细描述。</p>
+<p>　　USE_X_FORWARDED_HOST：一个布尔值，用于指定是否优先使用 X-Forwarded-Host 首部，仅在代理设置了该首部的情况下，才可以被使用。</p>
+<p>　　例如：”127.0.0.1:8000”</p>
+<p>　　注意：当主机位于多个代理后面时，get_host() 方法将会失败。除非使用中间件重写代理的首部。</p>
+<p>2.HttpRequest.get_full_path()</p>
+<p>　　返回 path，如果可以将加上查询字符串。</p>
+<p>　　例如：”/music/bands/the_beatles/?print=true”</p>
+<p>3.HttpRequest.get_signed_cookie(key, default=RAISE_ERROR, salt=’’, max_age=None)</p>
+<p>　　返回签名过的Cookie 对应的值，如果签名不再合法则返回django.core.signing.BadSignature。</p>
+<p>　　如果提供 default 参数，将不会引发异常并返回 default 的值。</p>
+<p>　　可选参数salt 可以用来对安全密钥强力攻击提供额外的保护。max_age 参数用于检查Cookie 对应的时间戳以确保Cookie 的时间不会超过max_age 秒。</p>
+<pre><code>&gt;&gt;&gt; request.get_signed_cookie(&apos;name&apos;)
+&apos;Tony&apos;
+&gt;&gt;&gt; request.get_signed_cookie(&apos;name&apos;, salt=&apos;name-salt&apos;)
+&apos;Tony&apos; # 假设在设置cookie的时候使用的是相同的salt
+&gt;&gt;&gt; request.get_signed_cookie(&apos;non-existing-cookie&apos;)
+...
+KeyError: &apos;non-existing-cookie&apos;    # 没有相应的键时触发异常
+&gt;&gt;&gt; request.get_signed_cookie(&apos;non-existing-cookie&apos;, False)
+False
+&gt;&gt;&gt; request.get_signed_cookie(&apos;cookie-that-was-tampered-with&apos;)
+...
+BadSignature: ...    
+&gt;&gt;&gt; request.get_signed_cookie(&apos;name&apos;, max_age=60)
+...
+SignatureExpired: Signature age 1677.3839159 &gt; 60 seconds
+&gt;&gt;&gt; request.get_signed_cookie(&apos;name&apos;, False, max_age=60)
+False
+</code></pre><p>4.HttpRequest.is_secure()</p>
+<p>　　如果请求时是安全的，则返回True；即请求通是过 HTTPS 发起的。</p>
+<p>5.HttpRequest.is_ajax()</p>
+<p>　　如果请求是通过XMLHttpRequest 发起的，则返回True，方法是检查 HTTP_X_REQUESTED_WITH 相应的首部是否是字符串’XMLHttpRequest’。</p>
+<p>　　大部分现代的 JavaScript 库都会发送这个头部。如果你编写自己的 XMLHttpRequest 调用（在浏览器端），你必须手工设置这个值来让 is_ajax() 可以工作。</p>
+<p>　　如果一个响应需要根据请求是否是通过AJAX 发起的，并且你正在使用某种形式的缓存例如Django 的 cache middleware，<br>   你应该使用 vary_on_headers(‘HTTP_X_REQUESTED_WITH’) 装饰你的视图以让响应能够正确地缓存。</p>
+<p>请求相关方法</p>
+<p>注意：键值对的值是多个的时候,比如checkbox类型的input标签，select标签，需要用：</p>
+<pre><code>request.POST.getlist(&quot;hobby&quot;)
+</code></pre><h2 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h2><p>与由Django自动创建的HttpRequest对象相比，HttpResponse对象是我们的职责范围了。我们写的每个视图都需要实例化，填充和返回一个HttpResponse。</p>
+<p>HttpResponse类位于django.http模块中。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>传递字符串<br>        from django.http import HttpResponse<br>        response = HttpResponse(“Here’s the text of the Web page.”)<br>        response = HttpResponse(“Text only, please.”, content_type=”text/plain”)</p>
+<p>设置或删除响应头信息<br>        response = HttpResponse()<br>        response[‘Content-Type’] = ‘text/html; charset=UTF-8’<br>        del response[‘Content-Type’]</p>
+<h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><p>HttpResponse.content：响应内容</p>
+<p>HttpResponse.charset：响应内容的编码</p>
+<p>HttpResponse.status_code：响应的状态码</p>
+<h2 id="JsonResponse对象"><a href="#JsonResponse对象" class="headerlink" title="JsonResponse对象"></a>JsonResponse对象</h2><p>JsonResponse是HttpResponse的子类，专门用来生成JSON编码的响应。</p>
+<pre><code>from django.http import JsonResponse
+
+response = JsonResponse({&apos;foo&apos;: &apos;bar&apos;})
+print(response.content)
+
+b&apos;{&quot;foo&quot;: &quot;bar&quot;}&apos;
+</code></pre><p>默认只能传递字典类型，如果要传递非字典类型需要设置一下safe关键字参数。<br>        response = JsonResponse([1, 2, 3], safe=False)</p>
+<h2 id="Django-shortcut-functions"><a href="#Django-shortcut-functions" class="headerlink" title="Django shortcut functions"></a>Django shortcut functions</h2><p><a href="https://docs.djangoproject.com/en/1.11/topics/http/shortcuts/" target="_blank" rel="noopener">官方文档</a></p>
+<h3 id="render"><a href="#render" class="headerlink" title="render()"></a>render()</h3><p><img src="/2018/12/05/Request对象和Response对象/1.png" alt=""></p>
+<p>结合一个给定的模板和一个给定的上下文字典，并返回一个渲染后的 HttpResponse 对象。</p>
+<p>参数：</p>
+<p>request： 用于生成响应的请求对象。<br>template_name：要使用的模板的完整名称，可选的参数<br>context：添加到模板上下文的一个字典。默认是一个空字典。如果字典中的某个值是可调用的，视图将在渲染模板之前调用它。<br>content_type：生成的文档要使用的MIME类型。默认为 DEFAULT_CONTENT_TYPE 设置的值。默认为’text/html’<br>status：响应的状态码。默认为200。<br>useing: 用于加载模板的模板引擎的名称。</p>
+<p>一个简单的例子：<br>        from django.shortcuts import render</p>
+<pre><code>def my_view(request):
+    # 视图的代码写在这里
+    return render(request, &apos;myapp/index.html&apos;, {&apos;foo&apos;: &apos;bar&apos;})
+</code></pre><p>上面的代码等于：<br>        from django.http import HttpResponse<br>        from django.template import loader</p>
+<pre><code>def my_view(request):
+    # 视图代码写在这里
+    t = loader.get_template(&apos;myapp/index.html&apos;)
+    c = {&apos;foo&apos;: &apos;bar&apos;}
+    return HttpResponse(t.render(c, request))
+</code></pre><h3 id="redirect"><a href="#redirect" class="headerlink" title="redirect()"></a>redirect()</h3><p>参数可以是：</p>
+<p>一个模型：将调用模型的get_absolute_url() 函数<br>一个视图，可以带有参数：将使用urlresolvers.reverse 来反向解析名称<br>一个绝对的或相对的URL，将原封不动的作为重定向的位置。</p>
+<p>默认返回一个临时的重定向；传递permanent=True 可以返回一个永久的重定向。</p>
+<p>示例:</p>
+<p>你可以用多种方式使用redirect() 函数。<br>传递一个具体的ORM对象（了解即可）<br>将调用具体ORM对象的get_absolute_url() 方法来获取重定向的URL：<br>        from django.shortcuts import redirect</p>
+<pre><code>def my_view(request):
+    ...
+    object = MyModel.objects.get(...)
+    return redirect(object)
+</code></pre><p>传递一个视图的名称</p>
+<pre><code>def my_view(request):
+    ...
+    return redirect(&apos;some-view-name&apos;, foo=&apos;bar&apos;)
+</code></pre><p>传递要重定向到的一个具体的网址</p>
+<pre><code>def my_view(request):
+    ...
+    return redirect(&apos;/some/url/&apos;)
+</code></pre><p>当然也可以是一个完整的网址</p>
+<pre><code>def my_view(request):
+    ...
+    return redirect(&apos;http://example.com/&apos;)
+</code></pre><p>默认情况下，redirect() 返回一个临时重定向。以上所有的形式都接收一个permanent 参数；如果设置为True，将返回一个永久的重定向：</p>
+<pre><code>def my_view(request):
+    ...
+    object = MyModel.objects.get(...)
+    return redirect(object, permanent=True)　　
+</code></pre><p>扩展阅读： </p>
+<p>临时重定向（响应状态码：302）和永久重定向（响应状态码：301）对普通用户来说是没什么区别的，它主要面向的是搜索引擎的机器人。<br>A页面临时重定向到B页面，那搜索引擎收录的就是A页面。<br>A页面永久重定向到B页面，那搜索引擎收录的就是B页面。</p>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'loren2o.blog'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/12/05/Request对象和Response对象/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/12/05/Request对象和Response对象/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//loren2o.blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <ul>
+                <li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
+                <li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>
+            </ul>
+            
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
