@@ -144,7 +144,7 @@
 <p>但是由于其影响的是全局，所以需要谨慎使用，使用不当会影响性能。</p>
 <p>说的直白一点中间件是帮助我们在视图函数执行之前和执行之后都可以做一些额外的操作，它本质上就是一个自定义类，类中定义了几个方法，Django框架会在处理请求的特定的时间去执行这些方法。</p>
 <p>我们一直都在使用中间件，只是没有注意到而已，打开Django项目的Settings.py文件，看到下图的MIDDLEWARE配置项。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE = [</span><br><span class="line">    &apos;django.middleware.security.SecurityMiddleware&apos;,</span><br><span class="line">    &apos;django.contrib.sessions.middleware.SessionMiddleware&apos;,</span><br><span class="line">    &apos;django.middleware.common.CommonMiddleware&apos;,</span><br><span class="line">    &apos;django.middleware.csrf.CsrfViewMiddleware&apos;,</span><br><span class="line">    &apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;,</span><br><span class="line">    &apos;django.contrib.messages.middleware.MessageMiddleware&apos;,</span><br><span class="line">    &apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE = [</span><br><span class="line">MIDDLEWARE = [</span><br><span class="line">    &apos;django.middleware.security.SecurityMiddleware&apos;,</span><br><span class="line">    &apos;django.contrib.sessions.middleware.SessionMiddleware&apos;,</span><br><span class="line">    &apos;django.middleware.common.CommonMiddleware&apos;,</span><br><span class="line">    &apos;django.middleware.csrf.CsrfViewMiddleware&apos;,</span><br><span class="line">    &apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;,</span><br><span class="line">    &apos;django.contrib.messages.middleware.MessageMiddleware&apos;,</span><br><span class="line">    &apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>MIDDLEWARE配置项是一个列表，列表中是一个个字符串，这些字符串其实是一个个类，也就是一个个中间件。我们之前已经接触过一个csrf相关的中间件了？我们一开始让大家把他注释掉，再提交post请求的时候，就不会被forbidden了，后来学会使用csrf_token之后就不再注释这个中间件了。</p>
 <p>那接下来就学习中间件中的方法以及这些方法什么时候被执行。</p>
 <h3 id="自定义一个中间件"><a href="#自定义一个中间件" class="headerlink" title="自定义一个中间件"></a>自定义一个中间件</h3><p>中间件可以定义五个方法，分别是：（主要的是process_request和process_response）</p>
@@ -188,6 +188,7 @@
 </ul>
 </li>
 </ul>
+<p><img src="/2018/12/10/Django之中间件/1.png" alt=""></p>
 <h4 id="process-response"><a href="#process-response" class="headerlink" title="process_response"></a>process_response</h4><p>它有两个参数，一个是request，一个是response，request就是上述例子中一样的对象，response是视图函数返回的HttpResponse对象。该方法的返回值也必须是HttpResponse对象。</p>
 <p>给上述的M1和M2加上process_response方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">from django.utils.deprecation import MiddlewareMixin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MD1(MiddlewareMixin):</span><br><span class="line"></span><br><span class="line">    def process_request(self, request):</span><br><span class="line">        print(&quot;MD1里面的 process_request&quot;)</span><br><span class="line"></span><br><span class="line">    def process_response(self, request, response):</span><br><span class="line">        print(&quot;MD1里面的 process_response&quot;)</span><br><span class="line">        return response</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MD2(MiddlewareMixin):</span><br><span class="line">    def process_request(self, request):</span><br><span class="line">        print(&quot;MD2里面的 process_request&quot;)</span><br><span class="line"></span><br><span class="line">    def process_response(self, request, response):</span><br><span class="line">        print(&quot;MD2里面的 process_response&quot;)</span><br><span class="line">        return response</span><br></pre></td></tr></table></figure>
@@ -218,7 +219,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://images2018.cnblogs.com/blog/867021/201804/867021-20180409214209079-1725524152.png" alt="img"> </p>
+<p><img src="/2018/12/10/Django之中间件/3.png" alt=""></p>
 <h4 id="process-view"><a href="#process-view" class="headerlink" title="process_view"></a>process_view</h4><p>process_view(self, request, view_func, view_args, view_kwargs)</p>
 <p>该方法有四个参数</p>
 <p>request是HttpRequest对象。</p>
@@ -249,7 +250,6 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://images2018.cnblogs.com/blog/867021/201804/867021-20180409214356226-286908304.png" alt="img"> </p>
 <h4 id="process-exception"><a href="#process-exception" class="headerlink" title="process_exception"></a>process_exception</h4><p>process_exception(self, request, exception)</p>
 <p>该方法两个参数:</p>
 <p>一个HttpRequest对象</p>
@@ -306,8 +306,7 @@
 <p>从结果看出：</p>
 <p>视图函数执行完之后，立即执行了中间件的process_template_response方法，顺序是倒序，先执行MD1的，在执行MD2的，接着执行了视图函数返回的HttpResponse对象的render方法，返回了一个新的HttpResponse对    象，接着执行中间件的process_response方法。</p>
 <ul>
-<li><p>process_template_response(self, request, response)</p>
-<ul>
+<li>process_template_response(self, request, response)<ul>
 <li>执行时间：<ul>
 <li>视图函数返回的response对象的一个方法</li>
 </ul>
@@ -326,10 +325,9 @@
 </ul>
 </li>
 </ul>
-<p>.</p>
 </li>
 </ul>
-<p><img src="https://images2018.cnblogs.com/blog/1168194/201807/1168194-20180719084357413-1778333372.png" alt="img"> </p>
+<p><img src="/2018/12/10/Django之中间件/5.png" alt="">  </p>
 
             </div>
 
