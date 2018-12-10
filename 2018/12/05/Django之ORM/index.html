@@ -349,15 +349,26 @@ It is strongly recommended you activate it.
     &apos;TextField&apos;: &apos;longtext&apos;,
     &apos;TimeField&apos;: &apos;time&apos;,
     &apos;UUIDField&apos;: &apos;char(32)&apos;,
-</code></pre><p>自定义一个char类型字段：<br>        class MyCharField(models.Field):<br>            “””<br>            自定义的char类型的字段类<br>            “””<br>            def <strong>init</strong>(self, max_length, <em>args, **kwargs):<br>                self.max_length = max_length<br>                super(MyCharField, self).<strong>init</strong>(max_length=max_length, </em>args, **kwargs)</p>
-<pre><code>def db_type(self, connection):
+</code></pre><p>自定义一个char类型字段：</p>
+<pre><code>class MyCharField(models.Field):
     &quot;&quot;&quot;
-    限定生成数据库表的字段类型为char，长度为max_length指定的值
+    自定义的char类型的字段类
     &quot;&quot;&quot;
-    return &apos;char(%s)&apos; % self.max_length
-</code></pre><p>使用自定义char类型字段：<br>        class Class(models.Model):<br>            id = models.AutoField(primary_key=True)<br>            title = models.CharField(max_length=25)</p>
-<pre><code># 使用自定义的char类型的字段
-cname = MyCharField(max_length=25)
+    def __init__(self, max_length, *args, **kwargs):
+        self.max_length = max_length
+        super(MyCharField, self).__init__(max_length=max_length, *args, **kwargs)
+
+    def db_type(self, connection):
+        &quot;&quot;&quot;
+        限定生成数据库表的字段类型为char，长度为max_length指定的值
+        &quot;&quot;&quot;
+        return &apos;char(%s)&apos; % self.max_length
+</code></pre><p>使用自定义char类型字段：</p>
+<pre><code>class Class(models.Model):
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=25)
+    # 使用自定义的char类型的字段
+    cname = MyCharField(max_length=25)
 </code></pre><p>创建的表结构：<br><img src="/2018/12/05/Django之ORM/2.png" alt=""></p>
 <h3 id="字段参数"><a href="#字段参数" class="headerlink" title="字段参数"></a>字段参数</h3><p>字段参数，详情可点击查看<a href="https://docs.djangoproject.com/en/1.11/ref/models/fields/#field-options" target="_blank" rel="noopener">官网</a>。</p>
 <pre><code>null                数据库中字段是否可以为空
@@ -444,7 +455,8 @@ validators          自定义错误验证（列表类型），从而定制想要
                                             to_field=&quot;id&quot;
                                             on_delete=models.SET(func),)
     related_name=None,          # 反向操作时，使用的字段名，用于代替 【表名_set】 如： obj.表名_set.all()
-    related_query_name=None,    # 反向操作时，使用的连接前缀，用于替换【表名】     如： models.UserGroup.objects.filter(表名__字段名=1).values(&apos;表名__字段名&apos;)
+    related_query_name=None,    # 反向操作时，使用的连接前缀，用于替换【表名】
+                                如： models.UserGroup.objects.filter(表名__字段名=1).values(&apos;表名__字段名&apos;)
     limit_choices_to=None,      # 在Admin或ModelForm中显示关联数据时，提供的条件：
                                 # 如：
                         - limit_choices_to={&apos;nid__gt&apos;: 5}
@@ -478,7 +490,8 @@ OneToOneField(ForeignKey)
 ManyToManyField(RelatedField)
     to,                         # 要进行关联的表名
     related_name=None,          # 反向操作时，使用的字段名，用于代替 【表名_set】 如： obj.表名_set.all()
-    related_query_name=None,    # 反向操作时，使用的连接前缀，用于替换【表名】     如： models.UserGroup.objects.filter(表名__字段名=1).values(&apos;表名__字段名&apos;)
+    related_query_name=None,    # 反向操作时，使用的连接前缀，用于替换【表名】 
+                                如： models.UserGroup.objects.filter(表名__字段名=1).values(&apos;表名__字段名&apos;)
     limit_choices_to=None,      # 在Admin或ModelForm中显示关联数据时，提供的条件：
                                 # 如：
                                     - limit_choices_to={&apos;nid__gt&apos;: 5}
@@ -597,7 +610,8 @@ obj.save()   # 修改单条数据
 #
 # from django.db.models import Count, Min, Max, Sum
 # models.Tb1.objects.filter(c1=1).values(&apos;id&apos;).annotate(c=Count(&apos;num&apos;))
-# SELECT &quot;app01_tb1&quot;.&quot;id&quot;, COUNT(&quot;app01_tb1&quot;.&quot;num&quot;) AS &quot;c&quot; FROM &quot;app01_tb1&quot; WHERE &quot;app01_tb1&quot;.&quot;c1&quot; = 1 GROUP BY &quot;app01_tb1&quot;.&quot;id&quot;
+# SELECT &quot;app01_tb1&quot;.&quot;id&quot;, COUNT(&quot;app01_tb1&quot;.&quot;num&quot;) 
+AS &quot;c&quot; FROM &quot;app01_tb1&quot; WHERE &quot;app01_tb1&quot;.&quot;c1&quot; = 1 GROUP BY &quot;app01_tb1&quot;.&quot;id&quot;
 
 # limit 、offset
 #
