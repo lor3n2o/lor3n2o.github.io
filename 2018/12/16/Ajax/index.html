@@ -1,0 +1,569 @@
+<!DOCTYPE HTML>
+<html>
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<link rel="bookmark" type="image/x-icon" href="/img/logo.png">
+	<link rel="shortcut icon" href="/img/logo.png">
+	
+			    <title>
+    Loren2o's Blog
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/css/mic_main.css">
+    <link rel="stylesheet" href="/css/dropdownMenu.css">
+    <meta name="keywords" content="Loren2o">
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css">
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+</head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css">
+<link rel="stylesheet" href="/css/typo.css">
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">Loren2o</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special">
+            <ul class="menu links">
+			<!-- Homepage  主页  --> 
+			<li>
+	            <a href="/" rel="nofollow">home</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">categories</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="category-link" href="/categories/Django/">Django</a>
+	                    </li></ul>
+	        </li>
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/tag/" title="tag">
+		                tag
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="https://github.com/lor3n2o" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a title="500px" href="http://500px.com" target="_blank" rel="noopener">
+                            <i class="icon fa fa-500px"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main">
+            <div class="post_page_title_img" style="height: 25rem;background-image: url(https://drscdn.500px.org/photo/17602391/q%3D80_m%3D2000/v2?webp=true&amp;sig=4af35d86aa4edd8d4905ce3924110ddf463444c101f063d6ba96a099c4b930ce);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>Ajax</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><h3 id="AJAX准备知识：JSON"><a href="#AJAX准备知识：JSON" class="headerlink" title="AJAX准备知识：JSON"></a>AJAX准备知识：JSON</h3><p>什么是 JSON ？</p>
+<ul>
+<li>JSON 指的是 JavaScript 对象表示法（JavaScript Object Notation）</li>
+<li>JSON 是轻量级的文本数据交换格式</li>
+<li>JSON 独立于语言 *</li>
+<li>JSON 具有自我描述性，更易理解</li>
+</ul>
+<p>* JSON 使用 JavaScript 语法来描述数据对象，但是 JSON 仍然独立于语言和平台。JSON 解析器和 JSON 库支持许多不同的编程语言。</p>
+<p> 啥都别多说了，上图吧！</p>
+<p><img src="/2018/12/16/Ajax/1.jpg" alt=""></p>
+<p>合格的json对象：</p>
+<pre><code>[&quot;one&quot;, &quot;two&quot;, &quot;three&quot;]
+{ &quot;one&quot;: 1, &quot;two&quot;: 2, &quot;three&quot;: 3 }
+{&quot;names&quot;: [&quot;张三&quot;, &quot;李四&quot;] }
+[ { &quot;name&quot;: &quot;张三&quot;}, {&quot;name&quot;: &quot;李四&quot;} ]　
+</code></pre><p>不合格的json对象：</p>
+<pre><code>{ name: &quot;张三&quot;, &apos;age&apos;: 32 }  　　　　　　 // 属性名必须使用双引号
+[32, 64, 128, 0xFFF] 　　　　　　　　　　  // 不能使用十六进制值
+{ &quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: undefined }    // 不能使用undefined
+{ &quot;name&quot;: &quot;张三&quot;,
+&quot;birthday&quot;: new Date(&apos;Fri, 26 Aug 2011 07:13:10 GMT&apos;),
+&quot;getName&quot;:  function() {return this.name;}  // 不能使用函数和日期对象
+}
+</code></pre><h4 id="stringify与parse方法"><a href="#stringify与parse方法" class="headerlink" title="stringify与parse方法"></a>stringify与parse方法</h4><p>JavaScript中关于JSON对象和字符串转换的两个方法：</p>
+<pre><code>JSON.parse(): 用于将一个 JSON 字符串转换为 JavaScript 对象　
+
+            JSON.parse(&apos;{&quot;name&quot;:&quot;alex&quot;}&apos;);
+            JSON.parse(&apos;{name:&quot;alex&quot;}&apos;) ;      // 错误
+            JSON.parse(&apos;[18,undefined]&apos;) ;     // 错误
+
+
+
+JSON.stringify(): 用于将 JavaScript 值转换为 JSON 字符串。
+            JSON.stringify({&quot;name&quot;:&quot;alex&quot;})
+</code></pre><h4 id="和XML的比较"><a href="#和XML的比较" class="headerlink" title="和XML的比较"></a>和XML的比较</h4><p>JSON 格式于2001年由 Douglas Crockford 提出，目的就是取代繁琐笨重的 XML 格式。</p>
+<p>JSON 格式有两个显著的优点：书写简单，一目了然；符合 JavaScript 原生语法，可以由解释引擎直接处理，不用另外添加解析代码。所以，JSON迅速被接受，已经成为各大网站交换数据的标准格式，并被写入ECMAScript 5，成为标准的一部分。</p>
+<p>XML和JSON都使用结构化方法来标记数据，下面来做一个简单的比较。</p>
+<p>用XML表示中国部分省市数据如下：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;country&gt;
+    &lt;name&gt;中国&lt;/name&gt;
+    &lt;province&gt;
+        &lt;name&gt;黑龙江&lt;/name&gt;
+        &lt;cities&gt;
+            &lt;city&gt;哈尔滨&lt;/city&gt;
+            &lt;city&gt;大庆&lt;/city&gt;
+        &lt;/cities&gt;
+    &lt;/province&gt;
+    &lt;province&gt;
+        &lt;name&gt;广东&lt;/name&gt;
+        &lt;cities&gt;
+            &lt;city&gt;广州&lt;/city&gt;
+            &lt;city&gt;深圳&lt;/city&gt;
+            &lt;city&gt;珠海&lt;/city&gt;
+        &lt;/cities&gt;
+    &lt;/province&gt;
+    &lt;province&gt;
+        &lt;name&gt;台湾&lt;/name&gt;
+        &lt;cities&gt;
+            &lt;city&gt;台北&lt;/city&gt;
+            &lt;city&gt;高雄&lt;/city&gt;
+        &lt;/cities&gt;
+    &lt;/province&gt;
+    &lt;province&gt;
+        &lt;name&gt;新疆&lt;/name&gt;
+        &lt;cities&gt;
+            &lt;city&gt;乌鲁木齐&lt;/city&gt;
+        &lt;/cities&gt;
+    &lt;/province&gt;
+&lt;/country&gt;
+</code></pre><p>用JSON表示如下：<br>            {<br>                “name”: “中国”,<br>                “province”: [{<br>                    “name”: “黑龙江”,<br>                    “cities”: {<br>                        “city”: [“哈尔滨”, “大庆”]<br>                    }<br>                }, {<br>                    “name”: “广东”,<br>                    “cities”: {<br>                        “city”: [“广州”, “深圳”, “珠海”]<br>                    }<br>                }, {<br>                    “name”: “台湾”,<br>                    “cities”: {<br>                        “city”: [“台北”, “高雄”]<br>                    }<br>                }, {<br>                    “name”: “新疆”,<br>                    “cities”: {<br>                        “city”: [“ 乌鲁木齐 “]<br>                    }<br>                }]<br>            }</p>
+<p>由上面的两端代码可以看出，JSON 简单的语法格式和清晰的层次结构明显要比 XML 容易阅读，并且在数据交换方面，由于 JSON 所使用的字符要比 XML 少得多，可以大大得节约传输数据所占用得带宽。 </p>
+<h3 id="AJAX简介"><a href="#AJAX简介" class="headerlink" title="AJAX简介"></a>AJAX简介</h3><p>AJAX（Asynchronous Javascript And XML）翻译成中文就是“异步的Javascript和XML”。即使用Javascript语言与服务器进行异步交互，传输的数据为XML（当然，传输的数据不只是XML）。</p>
+<p>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。</p>
+<p>AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。（这一特点给用户的感受是在不知不觉中完成请求和响应过程）</p>
+<p>AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。</p>
+<ul>
+<li>同步交互：客户端发出一个请求后，需要等待服务器响应结束后，才能发出第二个请求；</li>
+<li>异步交互：客户端发出一个请求后，无需等待服务器响应结束，就可以发出第二个请求。</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a><strong>示例</strong></h4><p><strong>页面输入两个整数，通过AJAX传输到后端计算出结果并返回。</strong>  </p>
+<h5 id="html部分"><a href="#html部分" class="headerlink" title="html部分"></a>html部分</h5><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;IE=edge&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;AJAX局部刷新实例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;input type=&quot;text&quot; id=&quot;i1&quot;&gt;+
+&lt;input type=&quot;text&quot; id=&quot;i2&quot;&gt;=
+&lt;input type=&quot;text&quot; id=&quot;i3&quot;&gt;
+&lt;input type=&quot;button&quot; value=&quot;AJAX提交&quot; id=&quot;b1&quot;&gt;
+
+&lt;script src=&quot;/static/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+$(&quot;#b1&quot;).on(&quot;click&quot;, function () {
+    $.ajax({
+    url:&quot;/ajax_add/&quot;,
+    type:&quot;GET&quot;,
+    data:{&quot;i1&quot;:$(&quot;#i1&quot;).val(),&quot;i2&quot;:$(&quot;#i2&quot;).val()},
+    success:function (data) {
+        $(&quot;#i3&quot;).val(data);
+    }
+    })
+})
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+HTML部分代码
+</code></pre><h5 id="views-py"><a href="#views-py" class="headerlink" title="views.py"></a>views.py</h5><pre><code>def ajax_demo1(request):
+    return render(request, &quot;ajax_demo1.html&quot;)
+
+
+def ajax_add(request):
+    i1 = int(request.GET.get(&quot;i1&quot;))
+    i2 = int(request.GET.get(&quot;i2&quot;))
+    ret = i1 + i2
+    return JsonResponse(ret, safe=False)
+</code></pre><h5 id="urls-py"><a href="#urls-py" class="headerlink" title="urls.py"></a>urls.py</h5><p>urlpatterns = [<br>    …<br>    url(r’^ajax_add/‘, views.ajax_add),<br>    url(r’^ajax_demo1/‘, views.ajax_demo1),<br>    …<br>]</p>
+<h4 id="AJAX常见应用情景"><a href="#AJAX常见应用情景" class="headerlink" title="AJAX常见应用情景"></a>AJAX常见应用情景</h4><p>搜索引擎根据用户输入的关键字，自动提示检索关键字。</p>
+<p>还有一个很重要的应用场景就是注册时候的用户名的查重。</p>
+<p>其实这里就使用了AJAX技术！当文件框发生了输入变化时，使用AJAX技术向服务器发送一个请求，然后服务器会把查询到的结果响应给浏览器，最后再把后端返回的结果展示出来。</p>
+<ul>
+<li>整个过程中页面没有刷新，只是刷新页面中的局部位置而已！</li>
+<li>当请求发出后，浏览器还可以进行其他操作，无需等待服务器的响应！</li>
+</ul>
+<p><img src="/2018/12/16/Ajax/2.png" alt=""></p>
+<p>当输入用户名后，把光标移动到其他表单项上时，浏览器会使用AJAX技术向服务器发出请求，服务器会查询名为lemontree7777777的用户是否存在，最终服务器返回true表示名为lemontree7777777的用户已经存在了，浏览器在得到结果后显示“用户名已被注册！”。</p>
+<ul>
+<li>整个过程中页面没有刷新，只是局部刷新了；</li>
+<li>在请求发出后，浏览器不用等待服务器响应结果就可以进行其他操作；</li>
+</ul>
+<h4 id="AJAX的优缺点"><a href="#AJAX的优缺点" class="headerlink" title="AJAX的优缺点"></a>AJAX的优缺点</h4><h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h5><ul>
+<li>AJAX使用JavaScript技术向服务器发送异步请求；</li>
+<li>AJAX请求无须刷新整个页面；</li>
+<li>因为服务器响应内容不再是整个页面，而是页面中的部分内容，所以AJAX性能高； </li>
+</ul>
+<h3 id="jQuery实现的AJAX"><a href="#jQuery实现的AJAX" class="headerlink" title="jQuery实现的AJAX"></a>jQuery实现的AJAX</h3><p>最基本的jQuery发送AJAX请求示例：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;IE=edge&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;ajax test&lt;/title&gt;
+&lt;script src=&quot;https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;button id=&quot;ajaxTest&quot;&gt;AJAX 测试&lt;/button&gt;
+&lt;script&gt;
+$(&quot;#ajaxTest&quot;).click(function () {
+    $.ajax({
+    url: &quot;/ajax_test/&quot;,
+    type: &quot;POST&quot;,
+    data: {username: &quot;Q1mi&quot;, password: 123456},
+    success: function (data) {
+        alert(data)
+    }
+    })
+})
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>views.py：</p>
+<pre><code>def ajax_test(request):
+    user_name = request.POST.get(&quot;username&quot;)
+    password = request.POST.get(&quot;password&quot;)
+    print(user_name, password)
+    return HttpResponse(&quot;OK&quot;)
+</code></pre><h4 id="ajax参数"><a href="#ajax参数" class="headerlink" title="$.ajax参数"></a>$.ajax参数</h4><p>data参数中的键值对，如果值值不为字符串，需要将其转换成字符串类型。</p>
+<pre><code>$(&quot;#b1&quot;).on(&quot;click&quot;, function () {
+    $.ajax({
+    url:&quot;/ajax_add/&quot;,
+    type:&quot;GET&quot;,
+    data:{&quot;i1&quot;:$(&quot;#i1&quot;).val(),&quot;i2&quot;:$(&quot;#i2&quot;).val(),&quot;hehe&quot;: JSON.stringify([1, 2, 3])},
+    success:function (data) {
+        $(&quot;#i3&quot;).val(data);
+    }
+    })
+})
+</code></pre><h4 id="JS实现AJAX"><a href="#JS实现AJAX" class="headerlink" title="JS实现AJAX"></a>JS实现AJAX</h4><pre><code>var b2 = document.getElementById(&quot;b2&quot;);
+b2.onclick = function () {
+    // 原生JS
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open(&quot;POST&quot;, &quot;/ajax_test/&quot;, true);
+    xmlHttp.setRequestHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);
+    xmlHttp.send(&quot;username=q1mi&amp;password=123456&quot;);
+    xmlHttp.onreadystatechange = function () {
+    if (xmlHttp.readyState === 4 &amp;&amp; xmlHttp.status === 200) {
+        alert(xmlHttp.responseText);
+    }
+    };
+};　
+</code></pre><h3 id="AJAX请求如何设置-（CSRF-TOKEN）"><a href="#AJAX请求如何设置-（CSRF-TOKEN）" class="headerlink" title="AJAX请求如何设置 （CSRF_TOKEN）"></a>AJAX请求如何设置 （CSRF_TOKEN）</h3><h4 id="方式1"><a href="#方式1" class="headerlink" title="方式1"></a>方式1</h4><pre><code>通过获取隐藏的input标签中的csrfmiddlewaretoken值，放置在data中发送。
+
+        $.ajax({
+        url: &quot;/cookie_ajax/&quot;,
+        type: &quot;POST&quot;,
+        data: {
+            &quot;username&quot;: &quot;Q1mi&quot;,
+            &quot;password&quot;: 123456,
+            &quot;csrfmiddlewaretoken&quot;: $(&quot;[name = &apos;csrfmiddlewaretoken&apos;]&quot;).val()  // 使用jQuery取出csrfmiddlewaretoken的值，拼接到data中
+        },
+        success: function (data) {
+            console.log(data);
+        }
+        })
+</code></pre><h4 id="方式2"><a href="#方式2" class="headerlink" title="方式2"></a>方式2</h4><p>通过获取返回的cookie中的字符串 放置在请求头中发送。</p>
+<p>注意：需要引入一个jquery.cookie.js插件。</p>
+<pre><code>$.ajax({
+url: &quot;/cookie_ajax/&quot;,
+type: &quot;POST&quot;,
+headers: {&quot;X-CSRFToken&quot;: $.cookie(&apos;csrftoken&apos;)},  // 从Cookie取csrftoken，并设置到请求头中
+data: {&quot;username&quot;: &quot;Q1mi&quot;, &quot;password&quot;: 123456},
+success: function (data) {
+    console.log(data);
+}
+})
+</code></pre><p>或者用自己写一个getCookie方法：</p>
+<pre><code>function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie &amp;&amp; document.cookie !== &apos;&apos;) {
+        var cookies = document.cookie.split(&apos;;&apos;);
+        for (var i = 0; i &lt; cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + &apos;=&apos;)) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie(&apos;csrftoken&apos;);
+</code></pre><p>每一次都这么写太麻烦了，可以使用$.ajaxSetup()方法为ajax请求统一设置。</p>
+<pre><code>function csrfSafeMethod(method) {
+// these HTTP methods do not require CSRF protection
+return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+$.ajaxSetup({
+beforeSend: function (xhr, settings) {
+    if (!csrfSafeMethod(settings.type) &amp;&amp; !this.crossDomain) {
+    xhr.setRequestHeader(&quot;X-CSRFToken&quot;, csrftoken);
+    }
+}
+});
+</code></pre><p><strong>注意：</strong></p>
+<pre><code>如果使用从cookie中取csrftoken的方式，需要确保cookie存在csrftoken值。
+
+如果你的视图渲染的HTML文件中没有包含 {% csrf_token %}，Django可能不会设置CSRFtoken的cookie。
+
+这个时候需要使用ensure_csrf_cookie()装饰器强制设置Cookie。
+
+            django.views.decorators.csrf import ensure_csrf_cookie
+
+
+            @ensure_csrf_cookie
+            def login(request):
+                pass
+</code></pre><p>更多细节详见：<a href="https://docs.djangoproject.com/en/1.11/ref/csrf/" target="_blank" rel="noopener">Djagno官方文档中关于CSRF的内容</a></p>
+<h3 id="AJAX上传文件"><a href="#AJAX上传文件" class="headerlink" title="AJAX上传文件"></a>AJAX上传文件</h3><pre><code>// 上传文件示例
+$(&quot;#b3&quot;).click(function () {
+var formData = new FormData();
+formData.append(&quot;csrfmiddlewaretoken&quot;, $(&quot;[name=&apos;csrfmiddlewaretoken&apos;]&quot;).val());
+formData.append(&quot;f1&quot;, $(&quot;#f1&quot;)[0].files[0]);
+$.ajax({
+    url: &quot;/upload/&quot;,
+    type: &quot;POST&quot;,
+    processData: false,  // 告诉jQuery不要去处理发送的数据
+    contentType: false,  // 告诉jQuery不要去设置Content-Type请求头
+    data: formData,
+    success:function (data) {
+    console.log(data)
+    }
+})
+})
+</code></pre><h3 id="练习（用户名是否已被注册）"><a href="#练习（用户名是否已被注册）" class="headerlink" title="练习（用户名是否已被注册）"></a>练习（用户名是否已被注册）</h3><h4 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h4><p>在注册表单中，当用户填写了用户名后，把光标移开后，会自动向服务器发送异步请求。服务器返回这个用户名是否已经被注册过。</p>
+<h4 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h4><ul>
+<li>页面中给出注册表单；</li>
+<li>在username input标签中绑定onblur事件处理函数。</li>
+<li>当input标签失去焦点后获取 username表单字段的值，向服务端发送AJAX请求；</li>
+<li>django的视图函数中处理该请求，获取username值，判断该用户在数据库中是否被注册，如果被注册了就返回“该用户已被注册”，否则响应“该用户名可以注册”。</li>
+</ul>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><h4 id="Django内置的serializers"><a href="#Django内置的serializers" class="headerlink" title="Django内置的serializers"></a>Django内置的serializers</h4><pre><code>def books_json(request):
+    book_list = models.Book.objects.all()[0:10]
+    from django.core import serializers
+    ret = serializers.serialize(&quot;json&quot;, book_list)
+    return HttpResponse(ret)
+</code></pre><h3 id="SweetAlert插件"><a href="#SweetAlert插件" class="headerlink" title="SweetAlert插件"></a>SweetAlert插件</h3><p><img src="/2018/12/16/Ajax/login.gif" alt=""></p>
+<p>点击下载 <a href="https://github.com/lipis/bootstrap-sweetalert" target="_blank" rel="noopener">Bootstrap-sweetalert项目</a>。</p>
+<pre><code>$(&quot;.btn-danger&quot;).on(&quot;click&quot;, function () {
+swal({
+    title: &quot;你确定要删除吗？&quot;,
+    text: &quot;删除可就找不回来了哦！&quot;,
+    type: &quot;warning&quot;,
+    showCancelButton: true,
+    confirmButtonClass: &quot;btn-danger&quot;,
+    confirmButtonText: &quot;删除&quot;,
+    cancelButtonText: &quot;取消&quot;,
+    closeOnConfirm: false
+    },
+    function () {
+    var deleteId = $(this).parent().parent().attr(&quot;data_id&quot;);
+    $.ajax({
+        url: &quot;/delete_book/&quot;,
+        type: &quot;post&quot;,
+        data: {&quot;id&quot;: deleteId},
+        success: function (data) {
+        if (data.status === 1) {
+            swal(&quot;删除成功!&quot;, &quot;你可以准备跑路了！&quot;, &quot;success&quot;);
+        } else {
+            swal(&quot;删除失败&quot;, &quot;你可以再尝试一下！&quot;, &quot;error&quot;)
+        }
+        }
+    })
+    });
+})
+</code></pre>
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/12/16/Ajax/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/12/16/Ajax/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <ul>
+                <li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
+                <li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>
+            </ul>
+            
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>

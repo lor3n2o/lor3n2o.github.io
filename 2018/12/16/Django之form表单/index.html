@@ -1,0 +1,721 @@
+<!DOCTYPE HTML>
+<html>
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<link rel="bookmark" type="image/x-icon" href="/img/logo.png">
+	<link rel="shortcut icon" href="/img/logo.png">
+	
+			    <title>
+    Loren2o's Blog
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/css/mic_main.css">
+    <link rel="stylesheet" href="/css/dropdownMenu.css">
+    <meta name="keywords" content="Loren2o">
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css">
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+</head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css">
+<link rel="stylesheet" href="/css/typo.css">
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">Loren2o</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special">
+            <ul class="menu links">
+			<!-- Homepage  主页  --> 
+			<li>
+	            <a href="/" rel="nofollow">home</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">categories</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="category-link" href="/categories/Django/">Django</a>
+	                    </li></ul>
+	        </li>
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/tag/" title="tag">
+		                tag
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="https://github.com/lor3n2o" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a title="500px" href="http://500px.com" target="_blank" rel="noopener">
+                            <i class="icon fa fa-500px"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main">
+            <div class="post_page_title_img" style="height: 25rem;background-image: url(https://drscdn.500px.org/photo/125925395/q%3D80_m%3D2000/v2?webp=true&amp;sig=ba8803c6b8e14854ff2b8d5b809bd74c6c99871cd876f0f69d6d6bf019a081ec);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>Django之form表单</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <h2 id="Form介绍"><a href="#Form介绍" class="headerlink" title="Form介绍"></a>Form介绍</h2><p>我们之前在HTML页面中利用form表单向后端提交数据时，都会写一些获取用户输入的标签并且用form标签把它们包起来。</p>
+<p>与此同时我们在好多场景下都需要对用户的输入做校验，比如校验用户是否输入，输入的长度和格式等正不正确。如果用户输入的内容有错误就需要在页面上相应的位置显示对应的错误信息.。</p>
+<p>Django form组件就实现了上面所述的功能。</p>
+<p>总结一下，其实form组件的主要功能如下:</p>
+<ul>
+<li>生成页面可用的HTML标签</li>
+<li>对用户提交的数据进行校验</li>
+<li>保留上次输入内容</li>
+</ul>
+<h3 id="普通方式手写注册功能"><a href="#普通方式手写注册功能" class="headerlink" title="普通方式手写注册功能"></a>普通方式手写注册功能</h3><h4 id="views-py"><a href="#views-py" class="headerlink" title="views.py"></a>views.py</h4><pre><code># 注册
+
+def register(request):
+    error_msg = &quot;&quot;
+    if request.method == &quot;POST&quot;:
+        username = request.POST.get(&quot;name&quot;)
+        pwd = request.POST.get(&quot;pwd&quot;)
+        # 对注册信息做校验
+        if len(username) &lt; 6:
+            # 用户长度小于6位
+            error_msg = &quot;用户名长度不能小于6位&quot;
+        else:
+            # 将用户名和密码存到数据库
+            return HttpResponse(&quot;注册成功&quot;)
+    return render(request, &quot;register.html&quot;, {&quot;error_msg&quot;: error_msg})
+</code></pre><h4 id="login-html"><a href="#login-html" class="headerlink" title="login.html"></a>login.html</h4><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;注册页面&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action=&quot;/reg/&quot; method=&quot;post&quot;&gt;
+    {% csrf_token %}
+    &lt;p&gt;
+        用户名:
+        &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        密码：
+        &lt;input type=&quot;password&quot; name=&quot;pwd&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;注册&quot;&gt;
+        &lt;p style=&quot;color: red&quot;&gt;{{ error_msg }}&lt;/p&gt;
+    &lt;/p&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="使用form组件实现注册功能"><a href="#使用form组件实现注册功能" class="headerlink" title="使用form组件实现注册功能"></a>使用form组件实现注册功能</h3><h4 id="views-py-1"><a href="#views-py-1" class="headerlink" title="views.py"></a>views.py</h4><p>先定义好一个RegForm类：</p>
+<pre><code>from django import forms
+
+# 按照Django form组件的要求自己写一个类
+class RegForm(forms.Form):
+    name = forms.CharField(label=&quot;用户名&quot;)
+    pwd = forms.CharField(label=&quot;密码&quot;)
+</code></pre><p>再写一个视图函数：</p>
+<pre><code># 使用form组件实现注册方式
+def register2(request):
+    form_obj = RegForm()
+    if request.method == &quot;POST&quot;:
+        # 实例化form对象的时候，把post提交过来的数据直接传进去
+        form_obj = RegForm(request.POST)
+        # 调用form_obj校验数据的方法
+        if form_obj.is_valid():
+            return HttpResponse(&quot;注册成功&quot;)
+    return render(request, &quot;register2.html&quot;, {&quot;form_obj&quot;: form_obj})
+</code></pre><h4 id="login2-html"><a href="#login2-html" class="headerlink" title="login2.html"></a>login2.html</h4><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;注册2&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form action=&quot;/reg2/&quot; method=&quot;post&quot; novalidate autocomplete=&quot;off&quot;&gt;
+        {% csrf_token %}
+        &lt;div&gt;
+            &lt;label for=&quot;{{ form_obj.name.id_for_label }}&quot;&gt;{{ form_obj.name.label }}&lt;/label&gt;
+            {{ form_obj.name }} {{ form_obj.name.errors.0 }}
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;label for=&quot;{{ form_obj.pwd.id_for_label }}&quot;&gt;{{ form_obj.pwd.label }}&lt;/label&gt;
+            {{ form_obj.pwd }} {{ form_obj.pwd.errors.0 }}
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;input type=&quot;submit&quot; class=&quot;btn btn-success&quot; value=&quot;注册&quot;&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>看网页效果发现 也验证了form的功能：<br>•    前端页面是form类的对象生成的                                      –&gt;生成HTML标签功能<br>•    当用户名和密码输入为空或输错之后 页面都会提示        –&gt;用户提交校验功能<br>•    当用户输错之后 再次输入 上次的内容还保留在input框   –&gt;保留上次输入内容</p>
+<h2 id="Form那些事儿"><a href="#Form那些事儿" class="headerlink" title="Form那些事儿"></a>Form那些事儿</h2><h3 id="常用字段与插件"><a href="#常用字段与插件" class="headerlink" title="常用字段与插件"></a>常用字段与插件</h3><p>创建Form类时，主要涉及到 【字段】 和 【插件】，字段用于对用户请求数据的验证，插件用于自动生成HTML;</p>
+<h4 id="initial"><a href="#initial" class="headerlink" title="initial"></a>initial</h4><p>初始值，input框里面的初始值。</p>
+<pre><code>class LoginForm(forms.Form):
+    username = forms.CharField(
+        min_length=8,
+        label=&quot;用户名&quot;,
+        initial=&quot;张三&quot;  # 设置默认值
+    )
+    pwd = forms.CharField(min_length=6, label=&quot;密码&quot;)
+</code></pre><h4 id="error-messages"><a href="#error-messages" class="headerlink" title="error_messages"></a>error_messages</h4><p>重写错误信息。</p>
+<pre><code>class LoginForm(forms.Form):
+    username = forms.CharField(
+        min_length=8,
+        label=&quot;用户名&quot;,
+        initial=&quot;张三&quot;,
+        error_messages={
+            &quot;required&quot;: &quot;不能为空&quot;,
+            &quot;invalid&quot;: &quot;格式错误&quot;,
+            &quot;min_length&quot;: &quot;用户名最短8位&quot;
+        }
+    )
+    pwd = forms.CharField(min_length=6, label=&quot;密码&quot;)
+</code></pre><h4 id="password"><a href="#password" class="headerlink" title="password"></a>password</h4><pre><code>class LoginForm(forms.Form):
+    ...
+    pwd = forms.CharField(
+        min_length=6,
+        label=&quot;密码&quot;,
+        widget=forms.widgets.PasswordInput(attrs={&apos;class&apos;: &apos;c1&apos;}, render_value=True)
+    )
+</code></pre><h4 id="radioSelect"><a href="#radioSelect" class="headerlink" title="radioSelect"></a>radioSelect</h4><p>单radio值为字符串</p>
+<pre><code>class LoginForm(forms.Form):
+    username = forms.CharField(
+        min_length=8,
+        label=&quot;用户名&quot;,
+        initial=&quot;张三&quot;,
+        error_messages={
+            &quot;required&quot;: &quot;不能为空&quot;,
+            &quot;invalid&quot;: &quot;格式错误&quot;,
+            &quot;min_length&quot;: &quot;用户名最短8位&quot;
+        }
+    )
+    pwd = forms.CharField(min_length=6, label=&quot;密码&quot;)
+    gender = forms.fields.ChoiceField(
+        choices=((1, &quot;男&quot;), (2, &quot;女&quot;), (3, &quot;保密&quot;)),
+        label=&quot;性别&quot;,
+        initial=3,
+        widget=forms.widgets.RadioSelect()
+    )
+</code></pre><h4 id="单选Select"><a href="#单选Select" class="headerlink" title="单选Select"></a>单选Select</h4><pre><code>class LoginForm(forms.Form):
+    ...
+    hobby = forms.fields.ChoiceField(
+        choices=((1, &quot;篮球&quot;), (2, &quot;足球&quot;), (3, &quot;双色球&quot;), ),
+        label=&quot;爱好&quot;,
+        initial=3,
+        widget=forms.widgets.Select()
+    )
+</code></pre><h4 id="多选Select"><a href="#多选Select" class="headerlink" title="多选Select"></a>多选Select</h4><pre><code>class LoginForm(forms.Form):
+    ...
+    hobby = forms.fields.MultipleChoiceField(
+        choices=((1, &quot;篮球&quot;), (2, &quot;足球&quot;), (3, &quot;双色球&quot;), ),
+        label=&quot;爱好&quot;,
+        initial=[1, 3],
+        widget=forms.widgets.SelectMultiple()
+    )
+</code></pre><h4 id="单选checkbox"><a href="#单选checkbox" class="headerlink" title="单选checkbox"></a>单选checkbox</h4><pre><code>class LoginForm(forms.Form):
+    ...
+    keep = forms.fields.ChoiceField(
+        label=&quot;是否记住密码&quot;,
+        initial=&quot;checked&quot;,
+        widget=forms.widgets.CheckboxInput()
+    )
+</code></pre><h4 id="多选checkbox"><a href="#多选checkbox" class="headerlink" title="多选checkbox"></a>多选checkbox</h4><pre><code>class LoginForm(forms.Form):
+    ...
+    hobby = forms.fields.MultipleChoiceField(
+        choices=((1, &quot;篮球&quot;), (2, &quot;足球&quot;), (3, &quot;双色球&quot;),),
+        label=&quot;爱好&quot;,
+        initial=[1, 3],
+        widget=forms.widgets.CheckboxSelectMultiple()
+    )
+</code></pre><p>关于choice的注意事项：</p>
+<p>在使用选择标签时，需要注意choices的选项可以从数据库中获取，但是由于是静态字段 <strong><em>获取的值无法实时更新</em></strong>，那么需要自定义构造方法从而达到此目的。</p>
+<p>方式一：</p>
+<pre><code>from django.forms import Form
+from django.forms import widgets
+from django.forms import fields
+
+
+class MyForm(Form):
+
+    user = fields.ChoiceField(
+        # choices=((1, &apos;上海&apos;), (2, &apos;北京&apos;),),
+        initial=2,
+        widget=widgets.Select
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(MyForm,self).__init__(*args, **kwargs)
+        # self.fields[&apos;user&apos;].choices = ((1, &apos;上海&apos;), (2, &apos;北京&apos;),)
+        # 或
+        self.fields[&apos;user&apos;].choices = models.Classes.objects.all().values_list(&apos;id&apos;,&apos;caption&apos;)
+</code></pre><p>方式二：</p>
+<pre><code>from django import forms
+from django.forms import fields
+from django.forms import models as form_model
+
+
+class FInfo(forms.Form):
+    authors = form_model.ModelMultipleChoiceField(queryset=models.NNewType.objects.all())  # 多选
+    # authors = form_model.ModelChoiceField(queryset=models.NNewType.objects.all())  # 单选
+</code></pre><h3 id="Django-Form所有内置字段"><a href="#Django-Form所有内置字段" class="headerlink" title="Django Form所有内置字段"></a>Django Form所有内置字段</h3><pre><code>Field
+    required=True,               是否允许为空
+    widget=None,                 HTML插件
+    label=None,                  用于生成Label标签或显示内容
+    initial=None,                初始值
+    help_text=&apos;&apos;,                帮助信息(在标签旁边显示)
+    error_messages=None,         错误信息 {&apos;required&apos;: &apos;不能为空&apos;, &apos;invalid&apos;: &apos;格式错误&apos;}
+    validators=[],               自定义验证规则
+    localize=False,              是否支持本地化
+    disabled=False,              是否可以编辑
+    label_suffix=None            Label内容后缀
+
+
+CharField(Field)
+    max_length=None,             最大长度
+    min_length=None,             最小长度
+    strip=True                   是否移除用户输入空白
+
+IntegerField(Field)
+    max_value=None,              最大值
+    min_value=None,              最小值
+
+FloatField(IntegerField)
+    ...
+
+DecimalField(IntegerField)
+    max_value=None,              最大值
+    min_value=None,              最小值
+    max_digits=None,             总长度
+    decimal_places=None,         小数位长度
+
+BaseTemporalField(Field)
+    input_formats=None          时间格式化   
+
+DateField(BaseTemporalField)    格式：2015-09-01
+TimeField(BaseTemporalField)    格式：11:12
+DateTimeField(BaseTemporalField)格式：2015-09-01 11:12
+
+DurationField(Field)            时间间隔：%d %H:%M:%S.%f
+    ...
+
+RegexField(CharField)
+    regex,                      自定制正则表达式
+    max_length=None,            最大长度
+    min_length=None,            最小长度
+    error_message=None,         忽略，错误信息使用 error_messages={&apos;invalid&apos;: &apos;...&apos;}
+
+EmailField(CharField)      
+    ...
+
+FileField(Field)
+    allow_empty_file=False     是否允许空文件
+
+ImageField(FileField)      
+    ...
+    注：需要PIL模块，pip3 install Pillow
+    以上两个字典使用时，需要注意两点：
+        - form表单中 enctype=&quot;multipart/form-data&quot;
+        - view函数中 obj = MyForm(request.POST, request.FILES)
+
+URLField(Field)
+    ...
+
+
+BooleanField(Field)  
+    ...
+
+NullBooleanField(BooleanField)
+    ...
+
+ChoiceField(Field)
+    ...
+    choices=(),                选项，如：choices = ((0,&apos;上海&apos;),(1,&apos;北京&apos;),)
+    required=True,             是否必填
+    widget=None,               插件，默认select插件
+    label=None,                Label内容
+    initial=None,              初始值
+    help_text=&apos;&apos;,              帮助提示
+
+
+ModelChoiceField(ChoiceField)
+    ...                        django.forms.models.ModelChoiceField
+    queryset,                  # 查询数据库中的数据
+    empty_label=&quot;---------&quot;,   # 默认空显示内容
+    to_field_name=None,        # HTML中value的值对应的字段
+    limit_choices_to=None      # ModelForm中对queryset二次筛选
+
+ModelMultipleChoiceField(ModelChoiceField)
+    ...                        django.forms.models.ModelMultipleChoiceField
+
+
+
+TypedChoiceField(ChoiceField)
+    coerce = lambda val: val   对选中的值进行一次转换
+    empty_value= &apos;&apos;            空值的默认值
+
+MultipleChoiceField(ChoiceField)
+    ...
+
+TypedMultipleChoiceField(MultipleChoiceField)
+    coerce = lambda val: val   对选中的每一个值进行一次转换
+    empty_value= &apos;&apos;            空值的默认值
+
+ComboField(Field)
+    fields=()                  使用多个验证，如下：即验证最大长度20，又验证邮箱格式
+                            fields.ComboField(fields=[fields.CharField(max_length=20), fields.EmailField(),])
+
+MultiValueField(Field)
+    PS: 抽象类，子类中可以实现聚合多个字典去匹配一个值，要配合MultiWidget使用
+
+SplitDateTimeField(MultiValueField)
+    input_date_formats=None,   格式列表：[&apos;%Y--%m--%d&apos;, &apos;%m%d/%Y&apos;, &apos;%m/%d/%y&apos;]
+    input_time_formats=None    格式列表：[&apos;%H:%M:%S&apos;, &apos;%H:%M:%S.%f&apos;, &apos;%H:%M&apos;]
+
+FilePathField(ChoiceField)     文件选项，目录下文件显示在页面中
+    path,                      文件夹路径
+    match=None,                正则匹配
+    recursive=False,           递归下面的文件夹
+    allow_files=True,          允许文件
+    allow_folders=False,       允许文件夹
+    required=True,
+    widget=None,
+    label=None,
+    initial=None,
+    help_text=&apos;&apos;
+
+GenericIPAddressField
+    protocol=&apos;both&apos;,           both,ipv4,ipv6支持的IP格式
+    unpack_ipv4=False          解析ipv4地址，如果是::ffff:192.0.2.1时候，可解析为192.0.2.1， PS：protocol必须为both才能启用
+
+SlugField(CharField)           数字，字母，下划线，减号（连字符）
+    ...
+
+UUIDField(CharField)           uuid类型
+</code></pre><h3 id="校验"><a href="#校验" class="headerlink" title="校验"></a>校验</h3><p>方式一：</p>
+<pre><code>from django.forms import Form
+from django.forms import widgets
+from django.forms import fields
+from django.core.validators import RegexValidator
+
+class MyForm(Form):
+    user = fields.CharField(
+        validators=[RegexValidator(r&apos;^[0-9]+$&apos;, &apos;请输入数字&apos;), RegexValidator(r&apos;^159[0-9]+$&apos;, &apos;数字必须以159开头&apos;)],
+    )
+</code></pre><p>方式二：</p>
+<pre><code>import re
+from django.forms import Form
+from django.forms import widgets
+from django.forms import fields
+from django.core.exceptions import ValidationError
+
+
+# 自定义验证规则
+def mobile_validate(value):
+    mobile_re = re.compile(r&apos;^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$&apos;)
+    if not mobile_re.match(value):
+        raise ValidationError(&apos;手机号码格式错误&apos;)
+
+
+class PublishForm(Form):
+
+
+    title = fields.CharField(max_length=20,
+                            min_length=5,
+                            error_messages={&apos;required&apos;: &apos;标题不能为空&apos;,
+                                            &apos;min_length&apos;: &apos;标题最少为5个字符&apos;,
+                                            &apos;max_length&apos;: &apos;标题最多为20个字符&apos;},
+                            widget=widgets.TextInput(attrs={&apos;class&apos;: &quot;form-control&quot;,
+                                                        &apos;placeholder&apos;: &apos;标题5-20个字符&apos;}))
+
+
+    # 使用自定义验证规则
+    phone = fields.CharField(validators=[mobile_validate, ],
+                            error_messages={&apos;required&apos;: &apos;手机不能为空&apos;},
+                            widget=widgets.TextInput(attrs={&apos;class&apos;: &quot;form-control&quot;,
+                                                        &apos;placeholder&apos;: u&apos;手机号码&apos;}))
+
+    email = fields.EmailField(required=False,
+                            error_messages={&apos;required&apos;: u&apos;邮箱不能为空&apos;,&apos;invalid&apos;: u&apos;邮箱格式错误&apos;},
+                            widget=widgets.TextInput(attrs={&apos;class&apos;: &quot;form-control&quot;, &apos;placeholder&apos;: u&apos;邮箱&apos;}))
+</code></pre><h3 id="补充进阶"><a href="#补充进阶" class="headerlink" title="补充进阶"></a>补充进阶</h3><h4 id="应用Bootstrap样式"><a href="#应用Bootstrap样式" class="headerlink" title="应用Bootstrap样式"></a>应用Bootstrap样式</h4><p>Django form应用Bootstrap样式简单示例</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;IE=edge&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/static/bootstrap/css/bootstrap.min.css&quot;&gt;
+&lt;title&gt;login&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;div class=&quot;row&quot;&gt;
+    &lt;form action=&quot;/login2/&quot; method=&quot;post&quot; novalidate class=&quot;form-horizontal&quot;&gt;
+    {% csrf_token %}
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;{{ form_obj.username.id_for_label }}&quot;
+            class=&quot;col-md-2 control-label&quot;&gt;{{ form_obj.username.label }}&lt;/label&gt;
+        &lt;div class=&quot;col-md-10&quot;&gt;
+        {{ form_obj.username }}
+        &lt;span class=&quot;help-block&quot;&gt;{{ form_obj.username.errors.0 }}&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;{{ form_obj.pwd.id_for_label }}&quot; class=&quot;col-md-2 control-label&quot;&gt;{{ form_obj.pwd.label }}&lt;/label&gt;
+        &lt;div class=&quot;col-md-10&quot;&gt;
+        {{ form_obj.pwd }}
+        &lt;span class=&quot;help-block&quot;&gt;{{ form_obj.pwd.errors.0 }}&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;col-md-2 control-label&quot;&gt;{{ form_obj.gender.label }}&lt;/label&gt;
+        &lt;div class=&quot;col-md-10&quot;&gt;
+        &lt;div class=&quot;radio&quot;&gt;
+            {% for radio in form_obj.gender %}
+                        <label for="{{ radio.id_for_label }}">
+                            {{ radio.tag }}{{ radio.choice_label }}
+                        </label>
+                        {% endfor %}
+        &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;div class=&quot;col-md-offset-2 col-md-10&quot;&gt;
+        &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;注册&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;/static/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/static/bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h4 id="批量添加样式"><a href="#批量添加样式" class="headerlink" title="批量添加样式"></a>批量添加样式</h4><p>可通过重写form类的init方法来实现。</p>
+<pre><code>class LoginForm(forms.Form):
+    username = forms.CharField(
+        min_length=8,
+        label=&quot;用户名&quot;,
+        initial=&quot;张三&quot;,
+        error_messages={
+            &quot;required&quot;: &quot;不能为空&quot;,
+            &quot;invalid&quot;: &quot;格式错误&quot;,
+            &quot;min_length&quot;: &quot;用户名最短8位&quot;
+        }
+    ...
+
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                &apos;class&apos;: &apos;form-control&apos;
+            })
+</code></pre><h2 id="ModelForm"><a href="#ModelForm" class="headerlink" title="ModelForm"></a>ModelForm</h2><p>form与model的终极结合。</p>
+<pre><code>class BookForm(forms.ModelForm):
+
+    class Meta:
+        model = models.Book
+        fields = &quot;__all__&quot;
+        labels = {
+            &quot;title&quot;: &quot;书名&quot;,
+            &quot;price&quot;: &quot;价格&quot;
+        }
+        widgets = {
+            &quot;password&quot;: forms.widgets.PasswordInput(attrs={&quot;class&quot;: &quot;c1&quot;}),
+        }
+</code></pre><p>class Meta:下常用参数：</p>
+<pre><code>model = models.Student  # 对应的Model中的类
+fields = &quot;__all__&quot;  # 字段，如果是__all__,就是表示列出所有的字段
+exclude = None  # 排除的字段
+labels = None  # 提示信息
+help_texts = None  # 帮助提示信息
+widgets = None  # 自定义插件
+error_messages = None  # 自定义错误信息
+​    
+</code></pre>
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/12/16/Django之form表单/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2018/12/16/Django之form表单/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <ul>
+                <li>&copy;Powered By <a href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
+                <li>Design: <a href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>
+            </ul>
+            
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
